@@ -49,7 +49,7 @@ if [[ ! -e "$config_root" ]]; then
   }
   mkdir -p "$shared_root"
   staging_dir="$(mktemp -d "$shared_root/.configuration.XXXXXX")"
-  cp "$download_dir/source/AGENTS.md" "$download_dir/source/README.md" "$download_dir/source/LEARNING.md" "$download_dir/source/memory.md" "$download_dir/source/install.sh" "$staging_dir/"
+  cp "$download_dir/source/AGENTS.md" "$download_dir/source/README.md" "$download_dir/source/LEARNING.md" "$download_dir/source/Next Step.md" "$download_dir/source/memory.md" "$download_dir/source/install.sh" "$staging_dir/"
   cp -R "$download_dir/source/.agents" "$download_dir/source/templates" "$download_dir/source/scripts" "$staging_dir/"
   printf '%s\n' 'Configuration initiale issue de market-agent-setup ; modifier désormais les fichiers dans iCloud Drive.' > "$staging_dir/.market-agent-ready"
   if [[ -e "$config_root" ]]; then

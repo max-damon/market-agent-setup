@@ -26,7 +26,8 @@ iCloud Drive/MarketAgent/
 │   ├── templates/client/          modèles AGENTS.md et memory.md
 │   ├── scripts/new-client.sh      crée un client directement dans iCloud
 │   ├── install.sh                 rétablit les liens locaux si besoin
-│   ├── README.md et LEARNING.md   guides
+│   ├── README.md et LEARNING.md   guides de démarrage
+│   ├── Next Step.md               feuille de route des futurs workflows
 │   └── .market-agent-ready         témoin d'installation complète
 └── Clients/
     └── nom-du-client/
@@ -60,7 +61,7 @@ Une tâche Codex est l'agent principal. Elle peut demander « Prépare une étud
 
 Pour une mission complète : recherche sourcée → profil d'audience → brief validé → calendrier ou contenus → contrôle → validation humaine. Chaque étape transmet un résultat vérifiable à la suivante. Les sous-agents sont réservés aux travaux réellement indépendants ; la session principale reste responsable du brief et de la synthèse.
 
-Un skill décrit la méthode. Créer ou modifier un document Google Slides, un design Canva ou une campagne nécessite une connexion disponible et des droits réels. Le guide [LEARNING.md](LEARNING.md) donne le parcours d'adoption et les limites de ces intégrations.
+Un skill décrit la méthode. Créer ou modifier un document Google Slides, un design Canva ou une campagne nécessite une connexion disponible et des droits réels. Le guide [LEARNING.md](LEARNING.md) donne le parcours d'adoption ; [Next Step.md](Next%20Step.md) détaille les workflows à construire avec elle.
 
 ## Synchronisation et limites
 

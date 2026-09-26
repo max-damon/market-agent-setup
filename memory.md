@@ -12,6 +12,7 @@
 - Ne pas placer de secrets, jetons ou documents clients dans le dépôt source. Vérifier que le contrat client autorise iCloud avant d'y stocker ses documents.
 - Les changements de `AGENTS.md` prennent effet dans une nouvelle tâche Codex. Les connexions, conversations et configurations locales restent propres à chaque Mac.
 - Une publication, un envoi client ou une dépense exige une instruction explicite ; les skills produisent d'abord des brouillons contrôlables.
+- Les futures évolutions du dépôt source ne rejoignent pas automatiquement la configuration iCloud déjà installée. La procédure de mise à jour avec diff et sauvegarde est un chantier ouvert, décrit dans `Next Step.md`.
 
 ## Vérifications
 
