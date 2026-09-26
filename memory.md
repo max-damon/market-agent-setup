@@ -2,18 +2,18 @@
 
 ## Architecture
 
-- Ce dépôt porte les consignes globales, neuf skills marketing et les modèles de projet client. Aucun client réel ni secret n'y est stocké.
-- Chaque client doit avoir un projet local Codex et un dépôt privé distinct si ses fichiers peuvent être hébergés sur GitHub. Le modèle fournit `AGENTS.md` et `memory.md` à remplir avec des faits validés.
-- Sur chaque Mac, `scripts/install.sh` relie `AGENTS.md` et les dossiers des skills au clone local. `scripts/update.sh` récupère les commits distants puis relie les nouveaux skills. Le transfert exige commit/push sur un Mac, puis pull sur l'autre.
+- Ce dépôt GitHub sert de source initiale pour `install.sh`. Le script le clone temporairement et copie les fichiers actifs dans `iCloud Drive/MarketAgent/Configuration`, sans laisser de dépôt Git à la consultante.
+- Le Mac mini et le MacBook Air utilisent le même iCloud Drive. Sur chacun, `~/.codex/AGENTS.md` et `~/.agents/skills` pointent vers les fichiers iCloud. Les nouveaux skills deviennent visibles sur les deux Macs après synchronisation et nouvelle tâche Codex si nécessaire.
+- Chaque client possède un dossier distinct dans `iCloud Drive/MarketAgent/Clients`, avec `AGENTS.md`, `memory.md`, `contexte/`, `travail/` et `livrables/`. Aucun client réel n'est présent dans le dépôt source.
 
 ## Règles de maintenance
 
 - Garder des descriptions de skills distinctes et précises pour l'invocation implicite ; vérifier leur frontmatter après modification.
-- Ne pas intégrer automatiquement de données client, d'identifiants, de `config.toml` local ou de mémoire native Codex au dépôt commun.
-- Les changements de `AGENTS.md` prennent effet dans une nouvelle tâche Codex.
+- Ne pas placer de secrets, jetons ou documents clients dans le dépôt source. Vérifier que le contrat client autorise iCloud avant d'y stocker ses documents.
+- Les changements de `AGENTS.md` prennent effet dans une nouvelle tâche Codex. Les connexions, conversations et configurations locales restent propres à chaque Mac.
 - Une publication, un envoi client ou une dépense exige une instruction explicite ; les skills produisent d'abord des brouillons contrôlables.
 
-## Vérifications effectuées
+## Vérifications
 
-- 2026-09-26 : syntaxe Bash et frontmatter YAML contrôlés ; installation idempotente et sauvegarde du `AGENTS.md` existant testées dans un dossier personnel isolé.
-- 2026-09-26 : création d'un projet client et cycle push/pull entre deux clones temporaires testés. Les connexions réelles aux comptes de la consultante restent à faire sur ses Macs.
+- 2026-09-26 : les neuf skills ont passé la validation de frontmatter. Installation sur deux domiciles simulant deux Macs, relance idempotente, sauvegarde de l'ancien `AGENTS.md`, arrêt sur conflits et création d'un client vérifiés.
+- 2026-09-26 : `codex debug prompt-input` a découvert `editorial-calendar` via le lien symbolique du dossier utilisateur `~/.agents/skills`. La synchronisation iCloud réelle entre les deux Macs de la consultante reste à tester lors de l'installation.

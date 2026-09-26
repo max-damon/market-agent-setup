@@ -1,87 +1,71 @@
 # Market Agent Setup
 
-Configuration Codex pour une consultante marketing indépendante : consignes globales, banque de skills et modèle de projet client. Ce dépôt contient **la configuration commune**, sans données de client. Chaque client aura son propre dossier et, si la synchronisation Git est retenue, son propre dépôt GitHub privé.
+Configuration Codex pour une consultante marketing indépendante : consignes globales, neuf skills et modèle de projet client. **GitHub sert uniquement de source pour la première installation.** Les fichiers actifs vivent dans **son iCloud Drive**, sur le Mac mini et le MacBook Air.
 
-## Structure
+## Installation en une commande sur chaque Mac
+
+Activer iCloud Drive et attendre qu'il apparaisse dans le Finder. Dans le Terminal du **Mac mini**, lancer :
+
+```bash
+curl -fsSLo /tmp/install-market-agent.sh https://raw.githubusercontent.com/max-damon/market-agent-setup/main/install.sh && bash /tmp/install-market-agent.sh
+```
+
+Le script télécharge temporairement le dépôt, copie sa configuration initiale dans `iCloud Drive/MarketAgent/Configuration`, crée `iCloud Drive/MarketAgent/Clients`, puis relie les consignes et skills aux emplacements lus par Codex. Il supprime son clone temporaire ; elle n'a aucun dépôt Git à gérer.
+
+**Attendre ensuite** que `MarketAgent/Configuration` soit visible et téléchargé sur le **MacBook Air**, puis lancer exactement la même commande sur ce Mac. Le script détecte les fichiers iCloud existants et les utilise sans les remplacer. Ce lancement séquentiel évite de créer deux copies concurrentes pendant la première synchronisation.
+
+Le script sauvegarde un éventuel `~/.codex/AGENTS.md` avant de le remplacer par un lien. S'il trouve déjà des skills personnels dans `~/.agents/skills` ou un `AGENTS.override.md`, il s'arrête avec un message explicite pour ne rien écraser. Installer l'application Codex et se connecter à son compte séparément : ce script installe la **configuration**, pas l'application ni les accès à Canva ou Google.
+
+## Où sont les fichiers ?
 
 ```text
-market-agent-setup/
-├── AGENTS.md                 consignes globales à personnaliser
-├── memory.md                 état durable de cette configuration
-├── .agents/skills/           banque de skills activés selon la tâche
-├── templates/client/        AGENTS.md et memory.md de départ
-├── scripts/install.sh       relie les consignes et skills au Mac
-├── scripts/update.sh        récupère les nouveautés GitHub sans fusion forcée
-├── scripts/new-client.sh    crée un dossier client local à partir du modèle
-└── LEARNING.md              guide de choix et de mise en place
+iCloud Drive/MarketAgent/
+├── Configuration/
+│   ├── AGENTS.md                   consignes communes, partie personnelle à remplir
+│   ├── .agents/skills/             neuf skills marketing ; nouveaux skills ici
+│   ├── templates/client/          modèles AGENTS.md et memory.md
+│   ├── scripts/new-client.sh      crée un client directement dans iCloud
+│   ├── install.sh                 rétablit les liens locaux si besoin
+│   ├── README.md et LEARNING.md   guides
+│   └── .market-agent-ready         témoin d'installation complète
+└── Clients/
+    └── nom-du-client/
+        ├── AGENTS.md              contexte et règles du client
+        ├── memory.md              décisions et enseignements durables
+        ├── contexte/              documents de référence autorisés
+        ├── travail/               recherches et brouillons
+        └── livrables/             résultats validés
+
+~/.codex/AGENTS.md  → iCloud Drive/MarketAgent/Configuration/AGENTS.md
+~/.agents/skills    → iCloud Drive/MarketAgent/Configuration/.agents/skills
 ```
 
-`AGENTS.md` est le nom exact que Codex reconnaît. Une modification des consignes exige une nouvelle tâche Codex pour être prise en compte. Les skills ont chacun un nom et une description distincts : Codex peut les choisir selon la demande, ou elle peut les appeler explicitement, par exemple `$editorial-calendar`.
+Les deux liens sont créés **localement sur chaque Mac**. Les vrais fichiers sont dans iCloud. Un nouveau `SKILL.md` placé dans `Configuration/.agents/skills/<nom>/` devient visible sur l'autre Mac après synchronisation iCloud ; ouvrir une nouvelle tâche Codex si nécessaire. Aucune opération Git n'est demandée à la consultante. [Découverte officielle des skills](https://learn.chatgpt.com/docs/build-skills).
 
-## Installer sur chacun des deux Macs
+## Créer un projet client
 
-Prérequis : accès à ce dépôt GitHub depuis **son propre compte** et Git installé. Le dépôt doit rester privé si la configuration contient des préférences non publiques. Installer l'application Codex et s'y connecter séparément ; le script ne gère ni abonnement ni authentification.
-
-Depuis le Terminal du Mac mini, puis du MacBook Air :
+Depuis l'un ou l'autre Mac, après installation :
 
 ```bash
-git clone https://github.com/max-damon/market-agent-setup.git "$HOME/market-agent-setup" && bash "$HOME/market-agent-setup/scripts/install.sh"
+bash "$HOME/Library/Mobile Documents/com~apple~CloudDocs/MarketAgent/Configuration/scripts/new-client.sh" nom-du-client
 ```
 
-Si le dépôt est déjà cloné, lancer seulement `bash "$HOME/market-agent-setup/scripts/install.sh"`. Le script relie `~/.codex/AGENTS.md` et chaque skill dans `~/.agents/skills/` au dépôt. Il garde une copie datée d'un éventuel `AGENTS.md` global déjà présent ; il s'arrête si un skill portant le même nom existe déjà ou si un `AGENTS.override.md` masque les règles. Il ne touche pas à `config.toml`, aux identifiants et aux autres skills.
+Le script crée le dossier client **dans iCloud Drive**, avec `AGENTS.md`, `memory.md` et les trois sous-dossiers. Remplir `AGENTS.md` avec la consultante : offre, cibles, ton, contraintes, sources de vérité et circuit de validation. Codex complétera `memory.md` après les tâches qui établissent une décision ou un enseignement durable, selon les règles globales ; une hypothèse reste marquée « À vérifier ».
 
-**Contrôle :** ouvrir une nouvelle tâche Codex et demander « Quels fichiers de consignes utilises-tu ? Quels skills marketing vois-tu ? ». Pour un test plus direct, demander « Utilise `$editorial-calendar` pour proposer trois sujets fictifs ».
+Dans Codex, ajouter ce dossier client comme **projet local** et le choisir comme dossier principal, sur chaque Mac. Chaque client a son propre dossier principal pour éviter que Codex mélange les contextes. [Documentation des projets locaux](https://learn.chatgpt.com/docs/projects).
 
-## Modifier et synchroniser les deux Macs
+## Utiliser les agents et skills
 
-Git **ne synchronise pas automatiquement** les modifications locales. Après avoir modifié une règle ou un skill, relire le diff et vérifier l'absence de données sensibles, puis committer et pousser depuis le Mac utilisé :
+Une tâche Codex est l'agent principal. Elle peut demander « Prépare une étude du marché », « Construis un brief de campagne » ou « Relis cette présentation » : la description de chaque skill permet de sélectionner la méthode. Elle peut aussi l'appeler explicitement avec `$market-research`, `$campaign-brief` ou `$marketing-review`.
 
-```bash
-cd "$HOME/market-agent-setup"
-git status --short
-git diff --check
-git add AGENTS.md memory.md .agents/skills README.md LEARNING.md scripts templates .gitignore
-git diff --cached --check
-git diff --cached
-git commit -m "Mettre à jour la configuration marketing"
-git push
-```
+Pour une mission complète : recherche sourcée → profil d'audience → brief validé → calendrier ou contenus → contrôle → validation humaine. Chaque étape transmet un résultat vérifiable à la suivante. Les sous-agents sont réservés aux travaux réellement indépendants ; la session principale reste responsable du brief et de la synthèse.
 
-Sur l'autre Mac, lancer :
+Un skill décrit la méthode. Créer ou modifier un document Google Slides, un design Canva ou une campagne nécessite une connexion disponible et des droits réels. Le guide [LEARNING.md](LEARNING.md) donne le parcours d'adoption et les limites de ces intégrations.
 
-```bash
-bash "$HOME/market-agent-setup/scripts/update.sh"
-```
+## Synchronisation et limites
 
-Le script refuse d'écraser des modifications locales, effectue un `git pull --ff-only` et relie les nouveaux skills. Une nouvelle tâche Codex prend ensuite les règles à jour. Si les deux Macs ont modifié le même dépôt avant synchronisation, résoudre le conflit explicitement avant de poursuivre. Une modification de skill sur un Mac ne sera visible sur l'autre **qu'après push puis pull** ; Git apporte l'historique, pas la synchronisation instantanée.
-
-## Créer le premier projet client
-
-Une fois le nom choisi, sur un Mac :
-
-```bash
-bash "$HOME/market-agent-setup/scripts/new-client.sh" nom-du-client
-```
-
-Cela crée `~/Clients/nom-du-client/` avec `AGENTS.md`, `memory.md`, `contexte/`, `travail/`, `livrables/` et un dépôt Git local. Remplir d'abord le contexte avec la consultante ; seuls les **faits confirmés** entrent dans `AGENTS.md`. `memory.md` se remplit au fil des décisions et retours validés, selon la règle globale. Les documents de référence vont dans `contexte/`.
-
-Pour le retrouver sur les deux Macs, créer **un dépôt GitHub privé distinct par client** après vérification des clauses du contrat et des fichiers à versionner. Pousser depuis le premier Mac, cloner depuis le second. Les fichiers volumineux ou confidentiels dont le stockage GitHub n'est pas autorisé restent dans l'outil client approuvé ; `AGENTS.md` peut pointer vers leur emplacement sans copier leur contenu.
-
-Dans Codex, ouvrir le dossier du client comme projet local. Vérifier qu'une nouvelle tâche lit bien les consignes globales, le `AGENTS.md` du client et son `memory.md`, sans information d'un autre client. Les autres dossiers clients doivent rester hors du dossier principal de ce projet.
-
-## Comment utiliser les agents et les skills
-
-Une tâche Codex est l'agent principal. Elle peut demander directement « Prépare une étude du marché de X », « Construis un brief de campagne » ou « Relis ce livrable » : la description du skill aide Codex à sélectionner la méthode. Elle peut forcer un skill avec `$market-research`, `$campaign-brief` ou `$marketing-review`.
-
-Pour un travail en plusieurs étapes, utiliser des résultats vérifiables :
-
-```text
-recherche sourcée → profil d'audience → brief de campagne validé
-→ calendrier ou contenus → contrôle qualité → validation humaine
-```
-
-Des sous-agents spécialisés ne sont utiles que si plusieurs recherches indépendantes peuvent avancer en parallèle. Ils ne remplacent pas un brief clair, les sources du client ou sa validation. Le rôle d'un skill est de décrire la méthode ; l'accès à Google Slides, Canva, GA4 ou un compte publicitaire nécessite une connexion et des droits vérifiés séparément.
-
-## Avant d'élargir la configuration
-
-Tester un client et deux livrables récurrents pendant deux semaines. Mesurer le temps jusqu'au livrable accepté, les corrections et les erreurs, en comptant le temps passé à entretenir les fichiers. Ajouter un skill ou une intégration seulement quand un besoin répétitif est observé.
+- Modifier les fichiers **dans iCloud Drive** ; laisser iCloud terminer la synchronisation avant de changer de Mac. Ne pas éditer le même `AGENTS.md` ou `memory.md` sur deux Macs en même temps. [Gestion des conflits iCloud par Apple](https://support.apple.com/en-qa/guide/mac-help/mh40780/mac).
+- Garder le dossier `MarketAgent` téléchargé sur les deux Macs pour travailler hors ligne et éviter qu'un fichier ne soit indisponible au début d'une tâche.
+- iCloud synchronise aussi les suppressions. Garder une sauvegarde indépendante, par exemple Time Machine.
+- Les conversations Codex, connexions, jetons et `~/.codex/config.toml` restent propres à chaque Mac. Pour reprendre exactement une conversation du Mac mini depuis le portable, utiliser une connexion distante vers ce Mac si elle est disponible.
+- Vérifier que les contrats des clients autorisent **iCloud Drive** avant d'y déposer leurs documents. Sinon, ne placer dans le projet que les règles et références autorisées, sans copier les données interdites.

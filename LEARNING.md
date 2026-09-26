@@ -1,62 +1,59 @@
 # Apprendre à travailler avec Codex pour une activité de conseil marketing
 
-Ce guide reprend et actualise le document de cadrage rédigé avant la création de ce dépôt. Il sert de parcours pas à pas pour la consultante et pour la personne qui prépare son installation.
+Ce guide reprend le cadrage initial et l'adapte au choix final : **iCloud Drive synchronise les fichiers entre le Mac mini et le MacBook Air**. GitHub fournit seulement les fichiers de départ à l'installateur ; la consultante n'aura pas à cloner, committer ou pousser.
 
-## 1. Décision et bénéfice attendu
+## 1. Ce que le système doit améliorer
 
-**Oui, le setup est adapté** si les mêmes types de missions reviennent pour plusieurs clients : recherche, planification, contenus, présentation et reporting. Un projet local par client évite de répéter son contexte et limite les confusions. Les skills rendent les méthodes de travail réutilisables ; la mémoire par projet conserve les décisions validées.
+Un projet par client permet de retrouver rapidement son brief, son ton et ses décisions. Les skills donnent une méthode répétable pour la recherche, les campagnes, le contenu, la mesure et la présentation. Le gain attendu porte sur le temps perdu à répéter le contexte, les allers-retours de correction et la cohérence des livrables.
 
-La valeur attendue est moins de temps à reconstituer un brief, moins d'allers-retours sur la structure d'un livrable et plus de cohérence entre ses productions. Aucun pourcentage de productivité n'est garanti. Mesurer le **temps réel jusqu'au livrable accepté**, incluant recherche, relecture, corrections et entretien de la configuration.
+Ne pas annoncer un pourcentage de productivité avant le test. Mesurer le **temps jusqu'au livrable accepté**, en incluant recherche, production, relecture, corrections et entretien de la configuration.
 
-## 2. Architecture retenue pour deux Macs
+## 2. Préparer les deux Macs
+
+1. Utiliser **son propre compte ChatGPT** et vérifier l'accès à Codex dans son offre. Tarifs et limites peuvent changer : consulter la [documentation officielle](https://learn.chatgpt.com/docs/pricing).
+2. Installer l'application Codex et se connecter sur chaque Mac. Se connecter aussi séparément aux services qu'elle utilisera, selon leurs droits.
+3. Activer **iCloud Drive avec le même compte Apple** sur les deux Macs. Vérifier que son dossier est visible dans le Finder. Prévoir assez d'espace local et iCloud pour les projets clients.
+4. Sur le **Mac mini**, exécuter la commande unique du [README](README.md). L'installateur télécharge le dépôt dans un dossier temporaire, copie la configuration dans iCloud et crée les liens locaux. Il ne garde pas de clone Git sur son Mac.
+5. Attendre la présence de `MarketAgent/Configuration/.market-agent-ready` et des fichiers dans iCloud sur le **MacBook Air**, puis y lancer la **même commande**. L'installateur se relie aux fichiers déjà synchronisés.
+6. Ouvrir une nouvelle tâche Codex sur chaque Mac et demander « Quels fichiers de consignes et skills marketing sont chargés ? ». Essayer ensuite `$editorial-calendar` sur un client fictif. Codex charge les `AGENTS.md` au démarrage de la tâche. [Documentation officielle AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md), [skills](https://learn.chatgpt.com/docs/build-skills).
+
+**Test de synchronisation :** modifier une phrase de test dans `Configuration/AGENTS.md` sur le Mac mini, attendre qu'elle apparaisse sur le MacBook Air, puis ouvrir une nouvelle tâche sur celui-ci. Ajouter un skill de test dans `Configuration/.agents/skills/`, attendre sa présence sur l'autre Mac et vérifier qu'il peut être appelé. Supprimer ensuite le skill de test.
+
+## 3. Comprendre la structure
 
 ```text
-GitHub : market-agent-setup (ce dépôt)
-  ├── AGENTS.md global
-  ├── .agents/skills/ communs
-  └── templates/client/
-
-Mac mini et MacBook Air
-  ├── ~/market-agent-setup/ (clone du dépôt commun)
-  ├── ~/.codex/AGENTS.md → lien vers le clone local
-  ├── ~/.agents/skills/<skill> → liens vers le clone local
-  └── ~/Clients/<client>/ (un projet et un dépôt privé par client)
-       ├── AGENTS.md
-       ├── memory.md
-       ├── contexte/
-       ├── travail/
-       └── livrables/
+iCloud Drive/MarketAgent/
+├── Configuration/          AGENTS.md global, skills, modèles et guides
+└── Clients/
+    └── client-pilote/      un dossier principal Codex par client
+        ├── AGENTS.md       faits et règles stables du client
+        ├── memory.md       décisions et apprentissages validés
+        ├── contexte/       documents de référence autorisés
+        ├── travail/        recherches et brouillons
+        └── livrables/      documents destinés au client
 ```
 
-Les fichiers versionnés ne changent sur l'autre Mac qu'après **commit + push** sur le premier et **pull** sur le second. Cela donne un historique contrôlable et un retour arrière possible. Git ne synchronise ni les conversations Codex, ni les connexions aux services, ni les jetons, ni le fichier local `~/.codex/config.toml`. Se connecter à Codex et aux outils requis sur chaque Mac. Ne pas modifier le même fichier client sur les deux Macs avant synchronisation.
-
-**Décision sur les données clients :** un dépôt privé n'autorise pas automatiquement le dépôt de fichiers confidentiels. Vérifier chaque contrat et les droits du compte GitHub ; garder ailleurs les données dont le stockage n'est pas permis. Un dépôt client peut contenir seulement ses règles, décisions non sensibles et livrables autorisés.
-
-## 3. Installer la configuration commune
-
-1. Créer ou utiliser **son propre compte ChatGPT** et vérifier l'accès à Codex dans son offre actuelle. Les tarifs et limites évoluent ; consulter la [documentation officielle](https://learn.chatgpt.com/docs/pricing) au moment de l'installation.
-2. Installer l'application Codex sur les deux Macs et se connecter. La configuration éditoriale est indépendante du compte et de ses jetons.
-3. Donner à son compte GitHub l'accès au dépôt privé `market-agent-setup`, puis exécuter sur chaque Mac la commande unique de la section « Installer » du [README](README.md).
-4. Ouvrir une **nouvelle tâche** Codex pour vérifier que `AGENTS.md` global et les skills sont disponibles. Codex construit ses consignes au démarrage d'une tâche ; une tâche déjà ouverte peut conserver les anciennes règles. [Documentation officielle AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md), [skills](https://learn.chatgpt.com/docs/build-skills).
-5. Remplir avec elle la section « Préférences personnelles » du `AGENTS.md` global, puis committer et pousser cette modification après relecture. Récupérer la mise à jour sur l'autre Mac avec `scripts/update.sh`.
-
-Le script installe **cette configuration**, pas l'application, l'abonnement ou les connexions Canva/Google. Il préserve l'ancien `AGENTS.md` dans une sauvegarde datée s'il en existe un.
+Le `AGENTS.md` global, relié à `~/.codex/AGENTS.md` sur chaque Mac, contient les principes communs et une section personnelle à remplir avec elle. Le `AGENTS.md` de chaque client précise offre, audience, ton, canaux, contraintes, preuves et validation. Les documents longs vont dans `contexte/` ; les décisions durables vont dans `memory.md`. Codex lit les consignes globales puis celles du projet ouvert. [Documentation officielle](https://learn.chatgpt.com/docs/agent-configuration/agents-md).
 
 ## 4. Créer un client pilote
 
-1. Choisir un client dont les documents sont autorisés dans le stockage retenu et deux livrables fréquents. Créer son dossier avec `scripts/new-client.sh`.
-2. Remplir `AGENTS.md` avec les éléments **confirmés** : offre, cibles, positionnement, voix, canaux, contraintes, sources de vérité et circuit de validation. Ranger les documents de référence dans `contexte/` si leur stockage est permis.
-3. Garder `memory.md` court. Codex le lit au début d'une tâche significative et le met à jour après une décision ou un enseignement durable. Une suggestion de l'IA ou une hypothèse non validée ne devient pas un fait client. Cette politique vient de `AGENTS.md` ; ce fichier n'est pas une mémoire native qui se remplit magiquement.
-4. Ouvrir ce dossier comme **projet local Codex** sur le Mac utilisé. Commencer par « Résume ce que tu sais du client, cite les fichiers utilisés et distingue les manques ». Corriger les erreurs avant le premier livrable.
-5. Quand le dossier est prêt, créer son dépôt GitHub privé distinct et le cloner sur l'autre Mac. Vérifier que les deux copies ont le même commit avant de changer de machine.
+1. Choisir un client dont le contrat autorise les données nécessaires dans iCloud Drive. Choisir deux livrables récurrents et un exemple validé de chacun.
+2. Lancer `scripts/new-client.sh` comme indiqué dans le [README](README.md). Le dossier et les fichiers de départ sont créés directement dans iCloud.
+3. Remplir avec elle le `AGENTS.md` client uniquement avec des faits confirmés. Placer les briefs et exemples approuvés dans `contexte/` si leur stockage est autorisé.
+4. Dans Codex, ajouter le dossier du client comme **projet local** et le choisir comme dossier principal sur chaque Mac. Demander d'abord : « Résume ce que tu sais du client, cite les fichiers utilisés et distingue ce qui manque ». Corriger les erreurs avant de produire un livrable.
+5. Créer une nouvelle tâche par résultat distinct : audit, campagne, calendrier ou présentation. Cette séparation facilite la reprise sans mélanger les objectifs.
 
-Un `AGENTS.md` par client évite de charger tous les clients dans les règles globales. Le nom exact est au pluriel et en majuscules : `AGENTS.md`. Codex charge les règles globales puis celles du projet. [Documentation officielle](https://learn.chatgpt.com/docs/agent-configuration/agents-md).
+## 5. Faire vivre `memory.md` sans le remplir de bruit
 
-## 5. Utiliser la banque de skills
+Le fichier `memory.md` est une mémoire **explicite par client**. La règle globale demande à Codex de le lire au début d'une tâche substantielle et de le mettre à jour à la fin seulement lorsqu'une décision, une correction durable ou un résultat confirmé le justifie. Garder l'état actuel, limiter à 100 lignes, et marquer « À vérifier » les hypothèses. Ne jamais y placer de mots de passe ou de données personnelles sensibles.
 
-La banque initiale couvre neuf demandes reconnaissables : étude de marché, audience, concurrence, brief de campagne, calendrier éditorial, déclinaisons de contenus, revue de performance, contrôle marketing et présentation client. Chaque `SKILL.md` contient un déclencheur précis, une méthode, un résultat attendu et ses limites. Codex peut choisir le skill selon la demande ; la consultante peut aussi écrire son nom précédé de `$`.
+La [mémoire native de Codex](https://learn.chatgpt.com/docs/customization/memories) et les conversations ne sont pas ces fichiers. Elles restent liées à l'installation qui exécute la tâche. Si elle veut reprendre **exactement la même conversation** du Mac mini sur le MacBook Air, envisager l'[accès distant au Mac mini](https://learn.chatgpt.com/docs/remote-connections) ; les fichiers du client, eux, seront visibles localement sur les deux Macs grâce à iCloud.
 
-Deux parcours utiles :
+## 6. Utiliser la banque de skills
+
+Neuf skills répondent à des demandes précises : marché, audience, concurrence, brief de campagne, calendrier éditorial, déclinaison de contenu, revue de performance, contrôle marketing et présentation client. Codex peut en choisir un d'après sa description ; l'appel explicite `$nom-du-skill` reste possible. [Documentation officielle des skills](https://learn.chatgpt.com/docs/build-skills).
+
+Deux enchaînements utiles :
 
 ```text
 Nouvelle campagne :
@@ -69,38 +66,24 @@ export de données → $performance-review → $client-presentation
 → $marketing-review → validation humaine
 ```
 
-Les flèches sont des **transferts de résultats**, pas une commande magique. Pour chaque étape, indiquer à Codex quel brief ou fichier validé utiliser. Rebecca Rae documente des enchaînements comparables pour [la production de contenus](https://github.com/thatrebeccarae/claude-marketing/blob/main/examples/content-production.md) et [l'audit client vers une présentation](https://github.com/thatrebeccarae/claude-marketing/blob/main/examples/dtc-account-audit.md). La [bibliothèque de Corey Haines](https://github.com/coreyhaines31/marketingskills) illustre l'intérêt d'un contexte de marque commun à plusieurs skills.
+Chaque flèche désigne un **résultat transmis** à l'étape suivante. Une hypothèse de recherche ne devient pas automatiquement un fait dans le brief. Ces séquences s'inspirent notamment des exemples publics de Rebecca Rae pour [la production de contenus](https://github.com/thatrebeccarae/claude-marketing/blob/main/examples/content-production.md) et [l'audit client vers une présentation](https://github.com/thatrebeccarae/claude-marketing/blob/main/examples/dtc-account-audit.md).
 
-## 6. Connecter des outils seulement quand le workflow le demande
+## 7. Connecter les outils après le workflow manuel
 
-Un skill peut préparer la structure d'un deck ou analyser un export CSV sans aucune connexion externe. Pour créer un vrai fichier Google Slides ou Canva, il faut un outil compatible, une authentification et les droits nécessaires. Tester d'abord lecture, puis création d'un **brouillon** et contrôle visuel avant partage. La [documentation OpenAI sur les skills](https://learn.chatgpt.com/docs/build-skills) distingue les instructions réutilisables des outils donnant accès aux services.
+Le skill `$client-presentation` peut préparer une trame exploitable sans connexion externe. La création d'un vrai Google Slides ou design Canva dépend d'un outil connecté, de droits appropriés et d'un contrôle du rendu. Commencer par lire un document autorisé, puis créer une copie ou un brouillon. Les [capacités Canva MCP](https://www.canva.dev/docs/apps/mcp/) ne sont pas automatiquement installées par ce dépôt.
 
-Le même principe vaut pour GA4, Meta Ads, Google Ads ou un CRM : commencer par un export ou une connexion en lecture, vérifier les indicateurs, puis envisager des actions d'écriture. Préparer des recommandations et garder la décision humaine sur une publication, un envoi ou une dépense.
+Pour GA4, Meta Ads ou Google Ads, un export CSV suffit pour tester le skill `$performance-review`. Passer ensuite à une connexion en lecture si le besoin est régulier. Garder une validation humaine avant publication, envoi ou changement de budget.
 
-### Présentations Google Slides et Canva
+Les automatisations planifiées viendront après le pilote : par exemple un brouillon hebdomadaire de veille concurrentielle sourcée. Une tâche doit signaler l'absence de données au lieu d'inventer un bilan. [Documentation des automatisations](https://learn.chatgpt.com/docs/automations).
 
-Si elle utilise déjà Google Workspace, commencer par un document ou une présentation **existante et autorisée**, vérifier la lecture, puis créer une copie de travail. Le skill `$client-presentation` structure le récit ; la création et la mise en page réelles dépendent d'une connexion Google Drive/Slides disponible dans son installation. Contrôler chaque diapositive avant partage.
+## 8. Formuler une demande complète
 
-Pour Canva, vérifier d'abord la présence d'une intégration utilisable sur son compte. La [documentation Canva sur MCP](https://www.canva.dev/docs/apps/mcp/) et son [API d'autoremplissage](https://www.canva.dev/docs/apps/rest-apis/autofill-guide/) décrivent des possibilités, pas un accès automatiquement inclus dans ce dépôt. Garder une trame exportable en solution immédiate tant que l'intégration n'est pas validée.
+> « Dans le projet [client], prépare [livrable] pour [public]. Utilise [sources], distingue faits confirmés et hypothèses, respecte [contraintes de ton, canal, longueur, échéance]. Livre [format]. Pose seulement les questions qui changeraient la recommandation ; sinon avance en indiquant tes hypothèses. Termine par les points à vérifier avant envoi. »
 
-### Mémoire native et accès distant
+Après correction, faire entrer dans `memory.md` seulement une préférence ou décision **validée et réutilisable**.
 
-Le `memory.md` de chaque client est un fichier versionnable et relisible. La [mémoire native de Codex](https://learn.chatgpt.com/docs/customization/memories), les conversations, les caches et les connexions vivent dans l'environnement de l'installation ; Git ne les transforme pas en mémoire commune. Si elle veut reprendre **exactement la même conversation** depuis le MacBook Air, examiner l'[accès distant à son Mac mini](https://learn.chatgpt.com/docs/remote-connections). Pour une nouvelle tâche locale sur le MacBook Air, les fichiers Git synchronisés fournissent le contexte durable.
+## 9. Mesurer et sécuriser la synchronisation
 
-### Automatisations après le pilote
+Tester trois tâches comparables avant et après le setup pendant deux semaines. Noter temps de brief, recherche, production, relecture, corrections, erreurs et entretien du système. Conserver les workflows qui raccourcissent le temps total sans dégrader la qualité.
 
-Un contrôle hebdomadaire pourrait préparer un brouillon de veille ou un bilan à partir de sources accessibles. Tester le workflow manuellement avant de le programmer ; une tâche planifiée locale dépend du Mac et de l'application qui l'exécutent. Toute automatisation doit indiquer ses sources, produire un résultat révisable et s'arrêter quand l'accès aux données manque. [Documentation des automatisations](https://learn.chatgpt.com/docs/automations).
-
-## 7. Formuler une mission sans aller-retour inutile
-
-Donner en une demande le client, l'objectif, les sources, le format et la validation attendue :
-
-> « Dans le projet [client], prépare [livrable] pour [public]. Utilise [documents/liens], distingue faits confirmés et hypothèses, respecte [contraintes de ton, canal, longueur et échéance]. Livre [format précis]. Pose seulement les questions qui changeraient la recommandation ; sinon avance en indiquant tes hypothèses. Termine par les points à vérifier avant envoi. »
-
-Pour une correction, demander un changement ciblé (« conserver l'argument, adapter le ton au public PME »). Après validation, conserver dans `memory.md` seulement la préférence ou la décision qui servira de nouveau.
-
-## 8. Mesurer le pilote et décider de la suite
-
-Sur deux semaines, comparer trois tâches similaires avant et après le setup. Noter pour chacune : temps de brief, recherche, production, relecture, corrections, erreurs détectées, temps de maintenance et avis de la consultante. Continuer si le temps total jusqu'au livrable accepté baisse sans hausse des erreurs. Ajouter ensuite seulement les skills ou connecteurs qui correspondent à ses prestations réelles.
-
-Le premier objectif est un système **fiable et facile à reprendre sur les deux Macs**. Les sous-agents, automatisations programmées et créations directes dans Canva ou Slides viennent après validation des workflows manuels.
+iCloud synchronise également les erreurs et suppressions : prévoir Time Machine ou une autre sauvegarde indépendante. Laisser une modification arriver sur l'autre Mac avant de reprendre `AGENTS.md` ou `memory.md`, et éviter les éditions simultanées. [Gestion des conflits iCloud par Apple](https://support.apple.com/en-qa/guide/mac-help/mh40780/mac). Les connexions, jetons, paramètres locaux et conversations Codex restent propres à chaque Mac ; seules les données placées dans `MarketAgent` sont synchronisées ici.

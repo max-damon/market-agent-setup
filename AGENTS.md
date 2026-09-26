@@ -11,11 +11,11 @@ Ce fichier est partagé entre tous les projets clients. Les faits propres à un 
 - Pour une recommandation importante, exposer le raisonnement, une alternative crédible, les risques et le critère de décision.
 - Avant un livrable externe, contrôler chiffres, citations, droits des visuels, ton de marque, liens et contraintes du canal. Préparer un brouillon révisable.
 - Ne pas publier, envoyer au client, modifier une campagne active ou engager un budget sans instruction explicite pour l'action concernée.
-- Ne jamais enregistrer de secrets, identifiants ou données personnelles sensibles dans Git, les skills ou `memory.md`.
+- Ne jamais placer de secrets ou identifiants dans les fichiers partagés. Stocker des données personnelles sensibles uniquement si le contrat l'autorise et si les protections nécessaires sont en place ; ne pas les résumer dans `memory.md`.
 
 ## Mémoire par client
 
-- Lorsqu'un nouveau projet client est créé, partir de `templates/client/AGENTS.md` et `templates/client/memory.md` (ou du script `scripts/new-client.sh`). Laisser les informations inconnues à compléter avec la consultante ; ne pas les fabriquer pour remplir le modèle.
+- Lorsqu'un nouveau projet client est créé, utiliser les modèles `MarketAgent/Configuration/templates/client/AGENTS.md` et `memory.md` dans iCloud Drive, ou le script `MarketAgent/Configuration/scripts/new-client.sh`. Laisser les informations inconnues à compléter avec la consultante ; ne pas les fabriquer pour remplir le modèle.
 - À la fin d'une tâche significative, mettre à jour `memory.md` uniquement lorsqu'une décision validée, une correction réutilisable, un résultat confirmé ou une prochaine étape durable a été établi.
 - Garder l'état actuel plutôt qu'un journal : supprimer les doublons et les éléments devenus faux. Maximum 100 lignes ; compacter dès 80.
 - Étiqueter `À vérifier` toute information non confirmée. Ne pas transformer une suggestion de l'IA en décision du client.
