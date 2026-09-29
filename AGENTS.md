@@ -16,10 +16,23 @@ Ce fichier est partagé entre tous les projets clients. Les faits propres à un 
 ## Mémoire par client
 
 - Lorsqu'un nouveau projet client est créé, utiliser les modèles `MarketAgent/Configuration/templates/client/AGENTS.md` et `memory.md` dans iCloud Drive, ou le script `MarketAgent/Configuration/scripts/new-client.sh`. Laisser les informations inconnues à compléter avec la consultante ; ne pas les fabriquer pour remplir le modèle.
-- À la fin d'une tâche significative, mettre à jour `memory.md` uniquement lorsqu'une décision validée, une correction réutilisable, un résultat confirmé ou une prochaine étape durable a été établi.
-- Garder l'état actuel plutôt qu'un journal : supprimer les doublons et les éléments devenus faux. Maximum 100 lignes ; compacter dès 80.
+- `memory.md` est le journal de bord du client : il permet de savoir où on en est et de répondre à « qu'est-ce qu'on a fait sur… ? ». Le lire au début de chaque tâche dans un projet client.
+- Après chaque opération importante (livrable produit ou modifié, décision, correction de sa part, étape franchie, point bloquant), ajouter en haut du journal une entrée datée courte :
+  ```
+  ## AAAA-MM-JJ — sujet (statut : en cours / validé / en attente de …)
+  - 2 à 5 puces : ce qui a été fait, décidé ou corrigé, où se trouve le résultat (lien Canva, Slides, Drive, chemin), prochaine étape.
+  ```
+- Pas d'entrée pour une simple question ou une exploration sans résultat. Ne pas réécrire les entrées passées ; corriger une erreur par une nouvelle entrée ou une mention `Corrigé le AAAA-MM-JJ`.
+- Pour une question sur l'historique, répondre à partir du journal en citant les dates ; si le journal ne contient pas l'information, le dire plutôt que la reconstituer.
+- Limite : 300 lignes. Au-delà de ~250, fusionner ou supprimer les entrées les plus anciennes ou les moins importantes, en gardant les décisions encore valables.
 - Étiqueter `À vérifier` toute information non confirmée. Ne pas transformer une suggestion de l'IA en décision du client.
-- Relire le fichier avant une modification si une autre session ou un autre Mac a pu le changer ; éviter les modifications simultanées sur les deux Macs.
+- Relire le fichier avant une modification si une autre session ou un autre Mac a pu le changer ; éviter les modifications simultanées sur les deux Macs. Une tâche planifiée n'écrit pas dans `memory.md` : elle dépose son résultat dans `travail/`.
+
+## Sources externes du client
+
+- La fiche client complète vit dans Notion, les fichiers dans Drive, les visuels dans Canva ; le `AGENTS.md` du client donne les liens. Ne pas relire ces sources à chaque tâche.
+- Les relire seulement : au début d'une nouvelle mission ou d'un nouveau livrable, à la reprise d'un client dont la dernière entrée du journal date de plus de 14 jours, avant une recommandation stratégique, en cas de doute ou de contradiction avec `memory.md`, ou sur demande.
+- Si une source liée est inaccessible (plugin non connecté sur ce Mac, droits manquants), le signaler et ne pas combler le manque par supposition.
 
 ## Skills et agents
 

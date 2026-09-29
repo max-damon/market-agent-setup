@@ -23,8 +23,15 @@ Ne conserver ici que les règles et faits stables qui orientent presque toutes l
 - Circuit de relecture et de validation : [À compléter]
 - Ce que Codex peut préparer ; ce qui nécessite un accord explicite : [À compléter]
 
+## Sources externes
+
+- Fiche client Notion : [Lien à compléter]
+- Dossier Google Drive : [Lien à compléter]
+- Dossier Canva : [Lien à compléter]
+- Relire ces sources selon les déclencheurs du `AGENTS.md` global, pas à chaque tâche.
+
 ## État du projet
 
-- Lire `memory.md` pour les décisions et apprentissages durables.
+- Lire `memory.md` : journal de ce qui a été fait, décidé et reste à faire pour ce client.
 - Si une information du présent fichier contredit une source client plus récente, relever le conflit et demander sa résolution avant de l'utiliser dans un livrable.
 - Ne jamais importer d'information d'un autre projet client.

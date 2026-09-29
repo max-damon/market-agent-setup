@@ -18,3 +18,4 @@
 
 - 2026-09-26 : les neuf skills ont passé la validation de frontmatter. Installation sur deux domiciles simulant deux Macs, relance idempotente, sauvegarde de l'ancien `AGENTS.md`, arrêt sur conflits et création d'un client vérifiés.
 - 2026-09-26 : `codex debug prompt-input` a découvert `editorial-calendar` via le lien symbolique du dossier utilisateur `~/.agents/skills`. La synchronisation iCloud réelle entre les deux Macs de la consultante reste à tester lors de l'installation.
+- 2026-09-29 : `memory.md` client passé d'un état compact (100 lignes) à un journal de bord daté (entrée de 2 à 5 puces par opération importante, 300 lignes, élagage dès ~250), sur le modèle du setup personnel de Maks. Fiche client complète dans Notion ; `AGENTS.md` client = faits stables + liens Notion/Drive/Canva, relus seulement sur déclencheurs. Tâches planifiées : écrivent dans `travail/`, jamais dans `memory.md`. Non commité, non déployé dans iCloud.

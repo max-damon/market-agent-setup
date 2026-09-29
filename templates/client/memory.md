@@ -1,23 +1,8 @@
-# Mémoire du client — [NOM DU CLIENT]
+# Mémoire — [NOM DU CLIENT]
 
-Ce fichier décrit l'état actuel du projet. Codex le met à jour après une tâche seulement si un fait durable a été confirmé ; une proposition non validée reste marquée `À vérifier`.
+Journal de bord du client : une entrée datée par opération importante, la plus récente en haut, 300 lignes maximum. Contexte stable : voir `AGENTS.md` et la fiche Notion.
 
-## Décisions validées
-
-- [À compléter après validation]
-
-## Enseignements confirmés
-
-- [À compléter avec la source ou la date si nécessaire]
-
-## Contraintes et préférences récurrentes
-
-- [À compléter]
-
-## Travail en cours et prochaines étapes
-
-- [À compléter]
-
-## Points à vérifier
-
-- [À compléter]
+<!-- Format d'une entrée :
+## AAAA-MM-JJ — sujet (statut : en cours / validé / en attente de …)
+- Ce qui a été fait, décidé ou corrigé ; où se trouve le résultat ; prochaine étape.
+-->

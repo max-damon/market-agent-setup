@@ -45,7 +45,7 @@ Le `AGENTS.md` global, relié à `~/.codex/AGENTS.md` sur chaque Mac, contient l
 
 ## 5. Faire vivre `memory.md` sans le remplir de bruit
 
-Le fichier `memory.md` est une mémoire **explicite par client**. La règle globale demande à Codex de le lire au début d'une tâche substantielle et de le mettre à jour à la fin seulement lorsqu'une décision, une correction durable ou un résultat confirmé le justifie. Garder l'état actuel, limiter à 100 lignes, et marquer « À vérifier » les hypothèses. Ne jamais y placer de mots de passe ou de données personnelles sensibles.
+Le fichier `memory.md` est une mémoire **explicite par client**. C'est le journal de bord du client : Codex le lit au début de chaque tâche et ajoute, après chaque opération importante, une entrée datée de 2 à 5 puces (ce qui a été fait, décidé ou corrigé, où est le résultat, prochaine étape). Elle peut l'interroger : « Qu'est-ce qu'on a fait sur la stratégie Instagram ? ». Limite 300 lignes, élaguée au-delà de ~250 ; les hypothèses restent marquées « À vérifier ». Ne jamais y placer de mots de passe ou de données personnelles sensibles.
 
 La [mémoire native de Codex](https://learn.chatgpt.com/docs/customization/memories) et les conversations ne sont pas ces fichiers. Elles restent liées à l'installation qui exécute la tâche. Si elle veut reprendre **exactement la même conversation** du Mac mini sur le MacBook Air, envisager l'[accès distant au Mac mini](https://learn.chatgpt.com/docs/remote-connections) ; les fichiers du client, eux, seront visibles localement sur les deux Macs grâce à iCloud.
 

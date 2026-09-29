@@ -51,7 +51,7 @@ Depuis l'un ou l'autre Mac, après installation :
 bash "$HOME/Library/Mobile Documents/com~apple~CloudDocs/MarketAgent/Configuration/scripts/new-client.sh" nom-du-client
 ```
 
-Le script crée le dossier client **dans iCloud Drive**, avec `AGENTS.md`, `memory.md` et les trois sous-dossiers. Remplir `AGENTS.md` avec la consultante : offre, cibles, ton, contraintes, sources de vérité et circuit de validation. Codex complétera `memory.md` après les tâches qui établissent une décision ou un enseignement durable, selon les règles globales ; une hypothèse reste marquée « À vérifier ».
+Le script crée le dossier client **dans iCloud Drive**, avec `AGENTS.md`, `memory.md` et les trois sous-dossiers. Remplir `AGENTS.md` avec la consultante : faits stables, liens vers la fiche Notion, le dossier Drive et le dossier Canva, circuit de validation. Codex tient `memory.md` comme un journal de bord : une entrée datée de quelques lignes après chaque opération importante, pour savoir où on en est et pouvoir demander « qu'est-ce qu'on a fait sur… ? ».
 
 Dans Codex, ajouter ce dossier client comme **projet local** et le choisir comme dossier principal, sur chaque Mac. Chaque client a son propre dossier principal pour éviter que Codex mélange les contextes. [Documentation des projets locaux](https://learn.chatgpt.com/docs/projects).
 
