@@ -1,6 +1,6 @@
 # Prochaines étapes — adapter Codex à sa vraie façon de travailler
 
-La configuration actuelle fournit les consignes globales, neuf skills marketing, un modèle de projet client et une synchronisation des fichiers par iCloud Drive. **Elle ne connaît pas encore les processus réels de la consultante.** Cette page sert à recueillir ses exemples, choisir les connexions utiles et construire les workflows un par un. Elle n'active aucune connexion ni automatisation à elle seule.
+La configuration actuelle fournit les consignes globales, neuf skills marketing, treize skills Instagram, un modèle de projet client et une synchronisation des fichiers par iCloud Drive. **Elle ne connaît pas encore les processus réels de la consultante.** Cette page sert à recueillir ses exemples, choisir les connexions utiles et construire les workflows un par un. Elle n'active aucune connexion ni automatisation à elle seule.
 
 ## Ce que nous savons déjà
 

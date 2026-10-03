@@ -7,3 +7,4 @@
 credentials.json
 auth.json
 .codex/
+__pycache__/

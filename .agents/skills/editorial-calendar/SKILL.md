@@ -1,6 +1,6 @@
 ---
 name: editorial-calendar
-description: Planifier un calendrier de contenus par canal à partir d'objectifs, d'une audience et de ressources réelles. À utiliser pour une ligne éditoriale, un planning LinkedIn, blog, newsletter ou réseaux sociaux.
+description: Planifier un calendrier de contenus par canal à partir d'objectifs, d'une audience et de ressources réelles. À utiliser pour une ligne éditoriale, un planning LinkedIn, blog, newsletter ou réseaux sociaux. Pour un planning uniquement Instagram, préférer $ig-plan.
 ---
 
 # Calendrier éditorial

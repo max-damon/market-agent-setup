@@ -1,6 +1,6 @@
 ---
 name: performance-review
-description: Analyser les résultats d'une campagne ou d'un calendrier et préparer un bilan client avec recommandations. À utiliser pour un reporting, un audit de performance ou l'analyse d'un export GA4, Ads ou social.
+description: Analyser les résultats d'une campagne ou d'un calendrier et préparer un bilan client avec recommandations. À utiliser pour un reporting, un audit de performance ou l'analyse d'un export GA4, Ads ou social. Pour le bilan des publications d'un seul compte Instagram, préférer $ig-audit.
 ---
 
 # Revue de performance

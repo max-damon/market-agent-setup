@@ -1,6 +1,6 @@
 ---
 name: content-repurposing
-description: Décliner un contenu ou une idée validée en publications, email et autres formats adaptés aux canaux. À utiliser pour recycler un article, webinar, étude ou brief approuvé.
+description: Décliner un contenu ou une idée validée en publications, email et autres formats adaptés aux canaux. À utiliser pour recycler un article, webinar, étude ou brief approuvé. Pour une déclinaison uniquement en reels et carrousels Instagram, préférer $ig-repurpose.
 ---
 
 # Décliner un contenu

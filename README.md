@@ -1,6 +1,6 @@
 # Market Agent Setup
 
-Configuration Codex pour une consultante marketing indépendante : consignes globales, neuf skills et modèle de projet client. **GitHub sert uniquement de source pour la première installation.** Les fichiers actifs vivent dans **son iCloud Drive**, sur le Mac mini et le MacBook Air.
+Configuration Codex pour une consultante marketing indépendante : consignes globales, neuf skills marketing, treize skills Instagram et modèle de projet client. **GitHub sert uniquement de source pour la première installation.** Les fichiers actifs vivent dans **son iCloud Drive**, sur le Mac mini et le MacBook Air.
 
 ## Installation en une commande sur chaque Mac
 
@@ -22,8 +22,9 @@ Le script sauvegarde un éventuel `~/.codex/AGENTS.md` avant de le remplacer par
 iCloud Drive/MarketAgent/
 ├── Configuration/
 │   ├── AGENTS.md                   consignes communes, partie personnelle à remplir
-│   ├── .agents/skills/             neuf skills marketing ; nouveaux skills ici
+│   ├── .agents/skills/             9 skills marketing + 13 skills Instagram (ig-*) ; nouveaux skills ici
 │   ├── templates/client/          modèles AGENTS.md et memory.md
+│   ├── templates/instagram/       modèle voix-instagram.md
 │   ├── scripts/new-client.sh      crée un client directement dans iCloud
 │   ├── install.sh                 rétablit les liens locaux si besoin
 │   ├── README.md et LEARNING.md   guides de démarrage
@@ -60,6 +61,8 @@ Dans Codex, ajouter ce dossier client comme **projet local** et le choisir comme
 Une tâche Codex est l'agent principal. Elle peut demander « Prépare une étude du marché », « Construis un brief de campagne » ou « Relis cette présentation » : la description de chaque skill permet de sélectionner la méthode. Elle peut aussi l'appeler explicitement avec `$market-research`, `$campaign-brief` ou `$marketing-review`.
 
 Pour une mission complète : recherche sourcée → profil d'audience → brief validé → calendrier ou contenus → contrôle → validation humaine. Chaque étape transmet un résultat vérifiable à la suivante. Les sous-agents sont réservés aux travaux réellement indépendants ; la session principale reste responsable du brief et de la synthèse.
+
+**Skills Instagram (`$ig-*`).** Treize skills pour un compte Instagram : `$ig-reel`, `$ig-caption`, `$ig-carousel`, `$ig-story`, `$ig-plan`, `$ig-profile`, `$ig-viral`, `$ig-audit`, `$ig-repurpose`, `$ig-comment`, `$ig-reply`, `$ig-dm` et `$ig-human` (retire les tics d'écriture IA). Ils fonctionnent dans n'importe quel projet : celui de son compte personnel ou celui d'un client. Ils lisent la voix dans `contexte/voix-instagram.md` du projet (modèle dans `templates/instagram/`) et écrivent leur journal, leur plan et leur swipe file dans `travail/instagram/`. Les scripts Python fournis ne demandent aucune installation. Rien n'est jamais publié : elle publie elle-même. Adaptés en français de [instagram-agent-skill](https://github.com/Jakeschincariol/instagram-agent-skill) (licence MIT, fichier `LICENSE` dans chaque dossier `ig-*`).
 
 Un skill décrit la méthode. Créer ou modifier un document Google Slides, un design Canva ou une campagne nécessite une connexion disponible et des droits réels. Le guide [LEARNING.md](LEARNING.md) donne le parcours d'adoption ; [Next Step.md](Next%20Step.md) détaille les workflows à construire avec elle.
 

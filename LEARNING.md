@@ -51,7 +51,7 @@ La [mémoire native de Codex](https://learn.chatgpt.com/docs/customization/memor
 
 ## 6. Utiliser la banque de skills
 
-Neuf skills répondent à des demandes précises : marché, audience, concurrence, brief de campagne, calendrier éditorial, déclinaison de contenu, revue de performance, contrôle marketing et présentation client. Codex peut en choisir un d'après sa description ; l'appel explicite `$nom-du-skill` reste possible. [Documentation officielle des skills](https://learn.chatgpt.com/docs/build-skills).
+Neuf skills marketing répondent à des demandes précises : marché, audience, concurrence, brief de campagne, calendrier éditorial, déclinaison de contenu, revue de performance, contrôle marketing et présentation client. Codex peut en choisir un d'après sa description ; l'appel explicite `$nom-du-skill` reste possible. [Documentation officielle des skills](https://learn.chatgpt.com/docs/build-skills).
 
 Deux enchaînements utiles :
 

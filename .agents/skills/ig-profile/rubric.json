@@ -1,0 +1,79 @@
+{
+  "version": "1.0-fr",
+  "total": 100,
+  "note": "Douze critères. Note chacun honnêtement : une note généreuse n'aide personne. La plupart des profils, au premier passage, sont entre 30 et 45. La pondération est voulue : le champ nom, la première ligne de bio et les trois publications épinglées valent plus que la photo, parce que c'est ce qu'une inconnue arrivée depuis un reel regarde vraiment avant de décider de s'abonner.",
+  "items": [
+    {
+      "id": "name_field",
+      "points": 12,
+      "full_marks": "Le champ nom (30 caractères, la ligne en gras, pas l'identifiant) contient le nom et ce que la personne fait, avec les mots que les gens recherchent : « Camille Durand | Stratégie Instagram ». Ce champ est indexé par la recherche Instagram et la plupart des comptes le gâchent avec un nom seul.",
+      "common_fail": "Un nom seul, ou un nom avec un emoji."
+    },
+    {
+      "id": "bio_first_line",
+      "points": 12,
+      "full_marks": "La première ligne dit pour qui c'est et ce qui change pour eux, dans leurs mots. Pas un intitulé de poste, pas une liste d'adjectifs, pas trois emoji séparés par des barres.",
+      "common_fail": "« Entrepreneuse | Fan de café | Maman de deux »."
+    },
+    {
+      "id": "bio_body",
+      "points": 8,
+      "full_marks": "Le reste des 150 caractères porte une preuve ou une offre précise, et se lit comme des phrases plutôt qu'une liste séparée par des barres.",
+      "common_fail": "Une soupe de mots-clés, ou du vide."
+    },
+    {
+      "id": "pinned_three",
+      "points": 10,
+      "full_marks": "Trois publications épinglées en haut de la grille, avec trois rôles différents : la meilleure preuve, l'explication la plus claire de l'offre, et la meilleure présentation de la personne. Pas les trois plus vues par hasard.",
+      "common_fail": "Rien d'épinglé, donc le haut de la grille montre la dernière publication."
+    },
+    {
+      "id": "link",
+      "points": 8,
+      "full_marks": "Une seule destination, qui correspond à ce que la bio vient de promettre. Jusqu'à cinq liens sont autorisés ; au-delà de deux, c'est un menu, et un menu convertit moins bien qu'une porte.",
+      "common_fail": "Une page de liens avec onze options, ou aucun lien."
+    },
+    {
+      "id": "highlights",
+      "points": 8,
+      "full_marks": "Quatre à six stories à la une, nommées d'après les questions qu'un client se pose vraiment : Tarifs, Résultats, Comment ça marche, Qui suis-je. Couvertures cohérentes. Rien de plus d'un an en premier.",
+      "common_fail": "« Divers », « Vie », « Favoris », ou 14 stories à la une sans ordre."
+    },
+    {
+      "id": "grid_legibility",
+      "points": 8,
+      "full_marks": "Les neuf premières couvertures sont lisibles en miniature et disent de quoi parle le compte sans un seul appui. Les couvertures de reels sont choisies, pas laissées sur la première image.",
+      "common_fail": "Neuf couvertures d'un visage en pleine phrase, sans texte."
+    },
+    {
+      "id": "photo",
+      "points": 6,
+      "full_marks": "Le visage remplit environ 60 % d'un cercle affiché à environ 40 pixels. Yeux visibles, photo de moins de deux ans, fond qui ne vole pas la vedette.",
+      "common_fail": "Une photo en pied, un logo pour une marque personnelle, ou un selfie à bout de bras dans une pièce sombre."
+    },
+    {
+      "id": "handle",
+      "points": 6,
+      "full_marks": "Lisible, prononçable à voix haute, et identique sur les autres plateformes. Pas de tirets bas empilés ni de chiffres à la place des lettres.",
+      "common_fail": "Un identifiant que personne ne sait écrire après l'avoir entendu une fois."
+    },
+    {
+      "id": "category_contact",
+      "points": 6,
+      "full_marks": "Compte professionnel avec une catégorie qui correspond à l'offre, et des boutons de contact qui fonctionnent. Une adresse e-mail relevée, pas celle de 2019.",
+      "common_fail": "Compte personnel, donc pas de statistiques ni de bouton de contact."
+    },
+    {
+      "id": "recent_activity",
+      "points": 10,
+      "full_marks": "Une publication dans les sept derniers jours et des réponses aux commentaires de la plus récente. Un compte dont la dernière publication date de mars a l'air fermé.",
+      "common_fail": "Cinq semaines sans rien, ou un mur de commentaires sans réponse."
+    },
+    {
+      "id": "story_presence",
+      "points": 6,
+      "full_marks": "Une story en ligne en ce moment, ou au moins la plupart des jours. C'est la différence entre un profil et une personne.",
+      "common_fail": "Jamais de cercle."
+    }
+  ]
+}
